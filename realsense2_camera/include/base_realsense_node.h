@@ -203,6 +203,7 @@ namespace realsense2_camera
         void enable_devices();
         void setupFilters();
         void setupStreams();
+        void setupEmitters();
         bool setBaseTime(double frame_time, rs2_timestamp_domain time_domain);
         double frameSystemTimeSec(rs2::frame frame);
         cv::Mat& fix_depth_scale(const cv::Mat& from_image, cv::Mat& to_image);
@@ -304,6 +305,10 @@ namespace realsense2_camera
 
         ros::Publisher _pointcloud_publisher;
         ros::Time _ros_time_base;
+        bool _enable_emitter;
+        bool _emitter_on_off;
+        bool _enable_auto_exposure;
+        int _manual_exposure;
         bool _sync_frames;
         bool _pointcloud;
         bool _publish_odom_tf;
